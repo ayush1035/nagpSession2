@@ -28,7 +28,7 @@ class NewPost extends Component {
         posts.push(dataToPost)
         this.setState({
             posts: posts
-        })
+        },()=>{window.alert("Post Added")})
     };
 
     handleFormChange = (event) =>{
