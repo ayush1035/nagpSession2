@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 
 import './newPost.css';
-import PostListing from '../postsListing/postListing';
-
+import {Link} from 'react-router-dom'
 class NewPost extends Component {
     state = {
         id: '',
@@ -60,7 +58,7 @@ class NewPost extends Component {
                     <button onClick={this.postDataHandler}>Add Post</button>
                 </div>
                 <div>
-                    <PostListing posts={this.state.posts} />
+                   <Link to={{pathname:'/posts' , posts:this.state.posts}}>Post Listing </Link>
                 </div>
             </div>
         );
