@@ -1,7 +1,5 @@
 import React from 'react';
-
 import './post.css';
-import { Link } from 'react-router-dom';
 
 const post = (props) => (
     <div className="Post" >
@@ -9,7 +7,6 @@ const post = (props) => (
         <div className="Info">
             <div className="Author">{props.author}</div>
         </div>
-        <Link to={`/posts/${props.id}`}>See Details</Link>
     </div>
 
 );

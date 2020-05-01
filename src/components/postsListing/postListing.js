@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
 import Post from '../post/post';
 import './postListing.css';
-import FullPost from '../fullPost/fullPost';
 
 class PostListing extends Component {
-    state = {
-        posts: [],
-        error: false
+    constructor(props){
+        super(props);
     }
-    componentDidMount() {
-        // async call
-        fetch('http://localhost:3001/posts')
-            .then(response => response.json())
-            .then(data => this.setState({ posts: data }));
-
-    }
-
-  
     render() {
-        let posts = <p> Something went wrong</p>;
-        if (!this.state.error) {
-            posts = this.state.posts.map(post => {
+        let {posts} = this.props;
+        let postsList = <p> Something went wrong</p>;
+        if (posts && posts.length>0) {
+            postsList = posts.map(post => {
                 return <Post
                     key={post.id}
                     title={post.title}
@@ -35,7 +23,7 @@ class PostListing extends Component {
         return (
             <div>
                 <section className="Posts">
-                    {posts}
+                    {postsList}
                 </section>
             </div>
         );

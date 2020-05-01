@@ -1,39 +1,26 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
 import './fullPost.css';
 
 class FullPost extends Component {
-
-    state = {
-        loadedPost: null
-    };
-    componentDidMount() {
-        if (this.props.match.params.id) {
-            fetch('http://localhost:3001/posts/' + this.props.match.params.id)
-                .then(response => response.json())
-                .then(data => this.setState({ loadedPost: data }));
-
-        }
-    }
-
+   constructor(props)
+   {
+       super(props);
+   }
     render() {
-        let post = null;
-        if (this.state.loadedPost) {
-            post = (
+        let {loadedPost} = this.props.loadedPost 
+        if (loadedPost) {
+           return (
                 <div className="FullPost">
-                    <h1>{this.state.loadedPost.title}</h1>
-                    <p>{this.state.loadedPost.author}</p>
-                    <p>{this.state.loadedPost.content}</p>
-                    <p>{this.state.loadedPost.createdAt}</p>
-                    <p>{this.state.loadedPost.privacy}</p>
-
+                    <h1>{loadedPost.title}</h1>
+                    <p>{loadedPost.author}</p>
+                    <p>{loadedPost.content}</p>
+                    <p>{loadedPost.createdAt}</p>
+                    <p>{loadedPost.privacy}</p>
                 </div>
-
             );
         }
 
-        return post;
+        return null;
     }
 }
 
