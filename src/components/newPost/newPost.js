@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 
 import './newPost.css';
 import PostListing from '../postsListing/postListing';
