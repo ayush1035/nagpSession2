@@ -12,7 +12,6 @@ function PostListing(props) {
                         title={post.title}
                         author={post.author}
                         id={post.id}
-
                     />;
                 })}
             </div>
