@@ -9,7 +9,6 @@ function PostListing(props) {
             <div className="Posts">
                 {posts.map(post => {
                     return <Post
-                        key={post.id}
                         title={post.title}
                         author={post.author}
                         id={post.id}
