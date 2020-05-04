@@ -47,8 +47,19 @@ export default PostListing;
 
 
 
-// useEffect(()=>{
+
+
+
+
+
+
+
+
+// const [posts,setPosts] = useState([]);
+
+
+//     useEffect(()=>{
 //         fetch('http://localhost:3001/posts')
 //         .then(res=>res.json())
-//         .then(data=> setPosts(data));
+//         .then(data=>{ setPosts(data)});
 //     },[]);

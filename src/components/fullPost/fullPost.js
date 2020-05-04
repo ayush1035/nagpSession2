@@ -8,7 +8,7 @@ function FullPost(props) {
             fetch(`http://localhost:3001/posts/${id}`)
             .then(res=>res.json())
             .then(data=>setLoadedPost(data))
-        });
+        },[]);
         if (loadedPost) {
            return (
                 <div className="FullPost">
