@@ -1,13 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './fullPost.css';
 
-class FullPost extends Component {
-   constructor(props)
-   {
-       super(props);
-   }
-    render() {
-        let {loadedPost} = this.props.loadedPost 
+function FullPost(props) {
+        let {loadedPost} = props.loadedPost 
         if (loadedPost) {
            return (
                 <div className="FullPost">
@@ -19,9 +14,7 @@ class FullPost extends Component {
                 </div>
             );
         }
-
         return null;
-    }
 }
 
 export default FullPost;
