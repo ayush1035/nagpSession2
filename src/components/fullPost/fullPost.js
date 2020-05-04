@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './fullPost.css';
 
 function FullPost(props) {
-        let {loadedPost} = props.loadedPost 
+        const [loadedPost,setLoadedPost] = useState({});
+        const id = props.match.params.id
+        useEffect(()=>{
+            fetch(`http://localhost:3001/posts/${id}`)
+            .then(res=>res.json())
+            .then(data=>setLoadedPost(data))
+        });
         if (loadedPost) {
            return (
                 <div className="FullPost">

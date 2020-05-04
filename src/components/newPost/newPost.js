@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 import './newPost.css';
-import PostListing from '../postsListing/postListing';
-
+import { Link } from 'react-router-dom';
 class NewPost extends Component {
     state = {
         id: '',
@@ -16,24 +15,28 @@ class NewPost extends Component {
 
     postDataHandler = () => {
         const dataToPost = {
-            id: this.state.posts.length > 0 ? this.state.posts[this.state.posts.length - 1].id + 1 : 1,
+            id: Math.random(),
             title: this.state.title,
             content: this.state.content,
             author: this.state.author,
             createdAt: this.state.createdAt,
             privacy: this.state.privacy
         };
-        let posts = this.state.posts;
-        posts.push(dataToPost)
-        this.setState({
-            posts: posts
-        },()=>{window.alert("Post Added")})
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dataToPost)
+        };
+        fetch('http://localhost:3001/posts/', requestOptions)
+            .then(response => response.json())
+            .then(data => console.log(data));
     };
 
-    handleFormChange = (event) =>{
-        let {name, value} = event.target;
+    handleFormChange = (event) => {
+        let { name, value } = event.target;
         this.setState({
-            [name]:value
+            [name]: value
         });
 
     }
@@ -54,12 +57,12 @@ class NewPost extends Component {
                         <option value="private">Private</option>
                     </select>
                     <label>Created on</label>
-                    <input type="date" value={this.state.createdAt} name="createdAt"  onChange={this.handleFormChange}  />
-                    
+                    <input type="date" value={this.state.createdAt} name="createdAt" onChange={this.handleFormChange} />
+
                     <button onClick={this.postDataHandler}>Add Post</button>
                 </div>
                 <div>
-                    <PostListing posts={this.state.posts} />
+                    <Link to={{ pathname: '/posts' }}>Go To Posts </Link>
                 </div>
             </div>
         );
@@ -67,3 +70,53 @@ class NewPost extends Component {
 }
 
 export default NewPost;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const requestOptions = {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(dataToPost)
+// };
+// fetch('http://localhost:3001/posts', requestOptions)
+//     .then(response => response.json())
+//     .then(data => console.log(data));
