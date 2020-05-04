@@ -16,7 +16,7 @@ class NewPost extends Component {
 
     postDataHandler = () => {
         const dataToPost = {
-            id: this.state.posts.length > 0 ? this.state.posts[this.state.posts.length - 1].id + 1 : 1,
+            id: Math.random(),
             title: this.state.title,
             content: this.state.content,
             author: this.state.author,
@@ -67,3 +67,16 @@ class NewPost extends Component {
 }
 
 export default NewPost;
+
+
+
+
+
+// const requestOptions = {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(dataToPost)
+// };
+// fetch('http://localhost:3001/posts', requestOptions)
+//     .then(response => response.json())
+//    
