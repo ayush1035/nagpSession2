@@ -79,4 +79,5 @@ export default NewPost;
 // };
 // fetch('http://localhost:3001/posts', requestOptions)
 //     .then(response => response.json())
-//    
+//     .then(data=> this.setState({posts:data}),()=>{window.alert('Post has been added')}) 
+   
